@@ -250,10 +250,11 @@ func TestMinAreaRect(t *testing.T) {
 	if m.Center.Y != 2 {
 		t.Errorf("TestMinAreaRect(): unexpected center.Y = %v, want = %v", m.Center.Y, 2)
 	}
-	if m.Angle != 45.0 {
-		t.Errorf("TestMinAreaRect(): unexpected angle = %v, want = %v", m.Angle, 45.0)
+	if m.Angle != -45.0 {
+		t.Errorf("TestMinAreaRect(): unexpected angle = %v, want = %v", m.Angle, -45.0)
 	}
 }
+
 func TestFindContours(t *testing.T) {
 	img := IMRead("images/face-detect.jpg", IMReadGrayScale)
 	if img.Empty() {
