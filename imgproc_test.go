@@ -253,6 +253,22 @@ func TestMinAreaRect(t *testing.T) {
 	if m.Angle != -45.0 {
 		t.Errorf("TestMinAreaRect(): unexpected angle = %v, want = %v", m.Angle, -45.0)
 	}
+	needBoundRect := image.Rect(0, 0, 5, 5)
+	if m.BoundingRect != needBoundRect {
+		t.Errorf("TestMinAreaRect(): unexpected boundaries = %v, want = %v", m.BoundingRect, needBoundRect)
+	}
+	if m.Contour[0] != image.Pt(2, 4) {
+		t.Errorf("TestMinAreaRect(): unexpected contour point %d = %v, want = %v", 0, m.Contour[0], image.Pt(2, 4))
+	}
+	if m.Contour[1] != image.Pt(0, 2) {
+		t.Errorf("TestMinAreaRect(): unexpected contour point %d = %v, want = %v", 1, m.Contour[1], image.Pt(0, 2))
+	}
+	if m.Contour[2] != image.Pt(2, 0) {
+		t.Errorf("TestMinAreaRect(): unexpected contour point %d = %v, want = %v", 2, m.Contour[2], image.Pt(2, 0))
+	}
+	if m.Contour[3] != image.Pt(4, 2) {
+		t.Errorf("TestMinAreaRect(): unexpected contour point %d = %v, want = %v", 3, m.Contour[3], image.Pt(4, 2))
+	}
 }
 
 func TestFindContours(t *testing.T) {
